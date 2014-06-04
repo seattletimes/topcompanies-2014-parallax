@@ -1,0 +1,13 @@
+{
+  "name": "topcompanies-2014-parallax",
+  "description": "Seattle Times Top Companies 2014 (parallax)",
+  "version": "2014.0.1",
+  "dependencies": {
+    "csv": "^0.4.0",
+    "grunt": "^0.4.5",
+    "grunt-contrib-less": "^0.11.1",
+    "grunt-contrib-watch": "^0.6.1"
+  },
+  "author": "Thomas Wilburn",
+  "main": "Gruntfile.js"
+}
