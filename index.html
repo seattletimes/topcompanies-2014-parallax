@@ -29,17 +29,24 @@ canvas.backdrop {
   margin-bottom: 20px;
   clear: both;
   min-height: 1800px;
+  position: relative;
+}
+.scroll-section.fallback {
+  min-height: 0px;
 }
 .scroll-text {
   float: right;
   margin: 100px 20px 0 20px;
-  color: white;
   display: block;
-  border-radius: 8px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 .scroll-section:nth-child(2n) .scroll-text {
   float: left;
+}
+@media (max-device-width: 800px) {
+  .scroll-text {
+    float: none;
+    margin: 0;
+  }
 }
 /* info boxes */
 .company-info {
@@ -50,6 +57,16 @@ canvas.backdrop {
   position: relative;
   width: 350px;
   padding: 8px 24px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+@media (max-device-width: 800px) {
+  .company-info {
+    width: 100%;
+    top: -10px;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0px -8px 16px rgba(0, 0, 0, 0.5);
+  }
 }
 .company-info .header {
   width: 300px;
@@ -109,11 +126,19 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  line-height: 25px;
+  line-height: 30px;
   vertical-align: middle;
   font-family: verdana;
   padding-left: 10px;
   z-index: 999;
+  padding-bottom: 4px;
+}
+@media (max-device-width: 800px) {
+  nav {
+    position: relative;
+    text-align: center;
+    margin-bottom: 8px;
+  }
 }
 nav a {
   text-decoration: none;
@@ -125,6 +150,13 @@ nav .logo {
   margin-top: 5px;
   margin-right: 10px;
 }
+@media (max-device-width: 800px) {
+  nav .logo {
+    float: none;
+    display: block;
+    margin: 4px auto;
+  }
+}
 nav #bonw-title {
   font-weight: bold;
   color: darkgreen;
@@ -134,6 +166,12 @@ nav #bonw-title {
 nav .company-ranking {
   text-transform: uppercase;
   margin-right: 1em;
+  font-size: 13px;
+}
+@media (max-device-width: 800px) {
+  nav .company-ranking {
+    display: none;
+  }
 }
 nav .company-ranking a {
   color: #555555;
@@ -160,6 +198,19 @@ nav ul li {
 #chart {
   background: white;
   color: black;
+}
+/* old/mobile */
+img.fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9;
+  max-width: 100%;
+}
+@media (max-device-width: 800px) {
+  img.fallback {
+    position: relative;
+  }
 }
 
     </style>
@@ -293,7 +344,7 @@ nav ul li {
     </section>
     <script>
 var canvas = document.querySelector("canvas.backdrop");
-var context = canvas.getContext("2d");
+var context;
 
 var qsa = function(s) { return Array.prototype.slice.call(document.querySelectorAll(s)) };
 
@@ -304,7 +355,7 @@ var loaded = 0;
 var checkLoaded = function() {
   loaded++;
   if (loaded == sections.length) {
-    redraw();
+    init();
   }
 };
 sections.forEach(function(section) {
@@ -315,7 +366,35 @@ sections.forEach(function(section) {
   images[url] = image;
 });
 
-var redraw = function(e) {
+var init = function() {
+  try {
+    context = canvas.getContext("2d");
+  } catch(e) {
+    //IE8 gets mobile
+    initMobile();
+  }
+  if (!window.matchMedia || window.matchMedia("(max-device-width: 800px)").matches) {
+    //mobile
+    initMobile();
+  } else {
+    window.addEventListener("scroll", render);
+    window.addEventListener("resize", render);
+    render();
+  }
+};
+
+var initMobile = function() {
+  sections.forEach(function(section) {
+    var img = document.createElement("img");
+    img.src = section.getAttribute("data-image");
+    img.className = "fallback";
+    section.insertBefore(img, section.children[0]);
+    section.className += " fallback";
+    section.style.minHeight = img.height + "px";
+  })
+};
+
+var render = function(e) {
   var top = document.body.scrollTop || document.documentElement.scrollTop;
   var height = window.innerHeight;
   var width = window.innerWidth;
@@ -372,10 +451,7 @@ var redraw = function(e) {
     if (textBounds.bottom < 0) return;
     text.style.opacity = 1 - ((textBounds.bottom - height) / height);
   });
-}
-
-window.addEventListener("scroll", redraw);
-window.addEventListener("resize", redraw);
+};
     </script>
   </body>
 </html>

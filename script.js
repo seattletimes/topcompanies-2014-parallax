@@ -1,5 +1,5 @@
 var canvas = document.querySelector("canvas.backdrop");
-var context = canvas.getContext("2d");
+var context;
 
 var qsa = function(s) { return Array.prototype.slice.call(document.querySelectorAll(s)) };
 
@@ -10,7 +10,7 @@ var loaded = 0;
 var checkLoaded = function() {
   loaded++;
   if (loaded == sections.length) {
-    redraw();
+    init();
   }
 };
 sections.forEach(function(section) {
@@ -21,7 +21,35 @@ sections.forEach(function(section) {
   images[url] = image;
 });
 
-var redraw = function(e) {
+var init = function() {
+  try {
+    context = canvas.getContext("2d");
+  } catch(e) {
+    //IE8 gets mobile
+    initMobile();
+  }
+  if (!window.matchMedia || window.matchMedia("(max-device-width: 800px)").matches) {
+    //mobile
+    initMobile();
+  } else {
+    window.addEventListener("scroll", render);
+    window.addEventListener("resize", render);
+    render();
+  }
+};
+
+var initMobile = function() {
+  sections.forEach(function(section) {
+    var img = document.createElement("img");
+    img.src = section.getAttribute("data-image");
+    img.className = "fallback";
+    section.insertBefore(img, section.children[0]);
+    section.className += " fallback";
+    section.style.minHeight = img.height + "px";
+  })
+};
+
+var render = function(e) {
   var top = document.body.scrollTop || document.documentElement.scrollTop;
   var height = window.innerHeight;
   var width = window.innerWidth;
@@ -78,7 +106,4 @@ var redraw = function(e) {
     if (textBounds.bottom < 0) return;
     text.style.opacity = 1 - ((textBounds.bottom - height) / height);
   });
-}
-
-window.addEventListener("scroll", redraw);
-window.addEventListener("resize", redraw);
+};

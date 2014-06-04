@@ -24,17 +24,24 @@ canvas.backdrop {
   margin-bottom: 20px;
   clear: both;
   min-height: 1800px;
+  position: relative;
+}
+.scroll-section.fallback {
+  min-height: 0px;
 }
 .scroll-text {
   float: right;
   margin: 100px 20px 0 20px;
-  color: white;
   display: block;
-  border-radius: 8px;
-  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
 .scroll-section:nth-child(2n) .scroll-text {
   float: left;
+}
+@media (max-device-width: 800px) {
+  .scroll-text {
+    float: none;
+    margin: 0;
+  }
 }
 /* info boxes */
 .company-info {
@@ -45,6 +52,16 @@ canvas.backdrop {
   position: relative;
   width: 350px;
   padding: 8px 24px;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
+}
+@media (max-device-width: 800px) {
+  .company-info {
+    width: 100%;
+    top: -10px;
+    border-radius: 16px 16px 0 0;
+    box-shadow: 0px -8px 16px rgba(0, 0, 0, 0.5);
+  }
 }
 .company-info .header {
   width: 300px;
@@ -104,11 +121,19 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  line-height: 25px;
+  line-height: 30px;
   vertical-align: middle;
   font-family: verdana;
   padding-left: 10px;
   z-index: 999;
+  padding-bottom: 4px;
+}
+@media (max-device-width: 800px) {
+  nav {
+    position: relative;
+    text-align: center;
+    margin-bottom: 8px;
+  }
 }
 nav a {
   text-decoration: none;
@@ -120,6 +145,13 @@ nav .logo {
   margin-top: 5px;
   margin-right: 10px;
 }
+@media (max-device-width: 800px) {
+  nav .logo {
+    float: none;
+    display: block;
+    margin: 4px auto;
+  }
+}
 nav #bonw-title {
   font-weight: bold;
   color: darkgreen;
@@ -129,6 +161,12 @@ nav #bonw-title {
 nav .company-ranking {
   text-transform: uppercase;
   margin-right: 1em;
+  font-size: 13px;
+}
+@media (max-device-width: 800px) {
+  nav .company-ranking {
+    display: none;
+  }
 }
 nav .company-ranking a {
   color: #555555;
@@ -155,4 +193,17 @@ nav ul li {
 #chart {
   background: white;
   color: black;
+}
+/* old/mobile */
+img.fallback {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -9;
+  max-width: 100%;
+}
+@media (max-device-width: 800px) {
+  img.fallback {
+    position: relative;
+  }
 }
