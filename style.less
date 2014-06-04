@@ -1,0 +1,188 @@
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+body {
+  padding: 0;
+  margin: 0;
+  line-height: 1.4;
+  background: white;
+}
+
+canvas.backdrop {
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: black;
+  z-index: -999;
+}
+
+.scroll-section {
+  margin-bottom: 20px;
+  clear: both;
+  min-height: 1800px;
+  //background-color: rgba(255, 0, 0, .2);
+}
+
+.scroll-text {
+  float: right;
+  margin: 100px 20px 0 20px;
+  color: white;
+  display: block;
+  border-radius: 8px;
+  box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
+
+  .scroll-section:nth-child(2n) & {
+    float: left;
+  }
+}
+
+/* info boxes */
+
+@accentGreen: #899F8A;
+@originalGreen: #A7C5A9;
+
+.company-info {
+  background-color: #323232;
+  color: white;
+  font-family: 'Oswald', sans-serif;
+  font-size: 16px;
+  position: relative;
+  width: 350px;
+  padding: 8px 24px;
+
+  .header {
+    & > * {
+      -webkit-box-sizing: content-box;
+      -moz-box-sizing: content-box;
+      box-sizing: content-box;
+    }
+    width: 300px;
+  }
+
+  .numeral {
+    float: left;
+    width: 50px;
+    margin-top: .5em;
+    margin-right: 15px;
+    margin-bottom: 1em;
+  }
+
+  h2 {
+    width: 235px;
+    margin-top: 15px;
+    float: right;
+  }
+
+  .description {
+    clear: both;
+  }
+
+  label {
+    background-color: @originalGreen;
+    color: #222222;
+    font-family: Helvetica, sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    font-weight: bold;
+    padding: 3px;
+    border-radius: 2px;
+    margin-right: 5px;
+  }
+
+  p {
+    font-family: georgia, times, serif;
+  }
+
+  .read-more {
+    background: #606060;
+    display: block;
+    text-align: center;
+    padding: 4px;
+    color: white;
+    text-decoration: none;
+    font-family: Verdana, sans-serif;
+    font-size: 14px;
+    border-radius: 4px;
+
+    &:hover {
+      background: #666;
+    }
+  }
+}
+
+nav {
+  background: white;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, .4);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  line-height: 25px;
+  vertical-align: middle;
+  font-family: verdana;
+  padding-left: 10px;
+  z-index: 999;
+
+  a {
+    text-decoration: none;
+    border: none;
+  }
+
+  .logo {
+    height: 20px;
+    float: left;
+    margin-top: 5px;
+    margin-right: 10px;
+  }
+
+  #bonw-title {
+    font-weight: bold;
+    color: darkgreen;
+    text-transform: uppercase;
+    margin-right: 10px;
+  }
+
+  .company-ranking {
+    text-transform: uppercase;
+    margin-right: 1em;
+
+    a {
+      color: #555555;
+      text-decoration: none;
+      padding: 0 4px;
+
+      &:hover {
+        background: #EEE;
+      }
+    }
+  }
+
+  sup {
+    font-size: 60%;
+  }
+
+  ul {
+    padding: 0;
+    margin: 0;
+    display: inline;
+
+    li {
+      padding: 0;
+      margin: 0;
+      display: inline-block;
+    }
+  }
+}
+
+/* special sections */
+#chart {
+  background: white;
+  color: black;
+}
