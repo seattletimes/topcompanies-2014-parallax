@@ -25,6 +25,15 @@ canvas.backdrop {
   z-index: -999;
 }
 
+section.text {
+  background: white;
+  padding: 1em 2em;
+
+  @media @mobile {
+    padding: 1em 2px;
+  }
+}
+
 .scroll-section {
   margin-bottom: 20px;
   clear: both;
@@ -243,7 +252,7 @@ img.fallback {
 
   & > div, img {
     display: inline-block;
-    vertical-align: text-top;
+    //vertical-align: text-top;
   }
 }
 

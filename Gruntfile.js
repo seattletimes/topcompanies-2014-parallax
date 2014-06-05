@@ -55,10 +55,11 @@ module.exports = function(grunt) {
       data: {
         js: script,
         css: style,
-        companies: rows
+        companies: rows,
+        content: '{{ content }}'
       }
     });
-    fs.writeFileSync("index.html", output);
+    fs.writeFileSync("../topcompanies-2014-table/frames/full.html", output);
     });
     parser.write(coCSV);
     parser.end();
