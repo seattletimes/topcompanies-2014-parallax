@@ -126,12 +126,11 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  line-height: 30px;
+  line-height: 40px;
   vertical-align: middle;
   font-family: verdana;
   padding-left: 10px;
   z-index: 999;
-  padding-bottom: 4px;
 }
 @media (max-device-width: 800px) {
   nav {
@@ -147,7 +146,7 @@ nav a {
 nav .logo {
   height: 20px;
   float: left;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 10px;
 }
 @media (max-device-width: 800px) {
@@ -212,8 +211,34 @@ img.fallback {
     position: relative;
   }
 }
+/* commerce */
+.ad {
+  text-align: center;
+}
+.ad > div,
+.ad img {
+  display: inline-block;
+  vertical-align: text-top;
+}
+.share-button {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  line-height: normal;
+}
 
     </style>
+    <!-- start ad set-up -->
+    <script type="text/javascript">
+    <!--
+    //modify for specific page info
+    OAS_sitepage = 'www.seattletimes.com/business';
+    OAS_query = '?jefferies&middleeast&davidreid&chinacentraltelevision&asiapacific&americas&statemedia&businessfinance&guangzhou&canada&shanghai&johnculver&universityofwashington&beijing&departmentofmanagement&pizzahut&unitedstates&africa&whitbread&kentucky&kfc&troyalstead&unitedkingdom&asia&coffeegiant&andybarish&belindawong&xiaopingchen&companyexpansion&yumbrands&seattleuniversity&howardschultz&starbuckschina&newyork&newyearsday&chinesecommunistparty&fosterschoolofbusiness&seattle&europe&china&washingtondc&agonzalezseattletimescom';
+    OAS_listpos = 'Position1,TopRight,Right1,Top,Top1,Middle3,Position3,Right,Right2,Bottom,Top3';
+    //-->
+    </script>
+    <script type="text/javascript" src="http://seattletimes.com/js/standardFunctionality/AdTags.js"></script>
+    <!-- end ad set-up -->
   </head>
   <body>
     <canvas class="backdrop"></canvas>
@@ -230,6 +255,7 @@ img.fallback {
         <li class="company-ranking"><a href="#ranked-5">5<sup>th</sup></a></li>
         <li class="company-ranking"><a href="#chart">Chart</a></li>
       </ul>
+      <a class="share-button"></a>
     </nav>
     
     <section class="scroll-section" data-image="img/barrett.jpg" id="ranked-1">
@@ -337,11 +363,35 @@ img.fallback {
       <div style="clear: both"></div>
     </section>
     
+
+    <section class="ad">
+      <img src="http://seattletimes.com/art/ui/adv_top.gif" width="7" height="70" alt="Advertising" class="ad-bug" />
+        <script type="text/javascript">
+        <!--
+        OAS_AD('TopRight');
+        //-->
+        </script>
+    </section>
+
     <section id="chart">
       <h1>THE CHART GOES HERE</h1>
       <div style="height: 300px;">
       </div>
     </section>
+
+    <section>
+      <b>Reporting by:</b> Becky Bisbee, Sanjay Bhatt<br>
+      <b>Photos by:</b> Ken Lambert
+      <b>Interactive by:</b> Thomas Wilburn, Katrina Barlow
+    </section>
+    <script src="./share.min.js"></script>
+    <script>
+new Share(".share-button", {
+  ui: {
+    flyout: "bottom left"
+  }
+})
+    </script>
     <script>
 var canvas = document.querySelector("canvas.backdrop");
 var context;

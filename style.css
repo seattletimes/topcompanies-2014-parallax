@@ -121,12 +121,11 @@ nav {
   top: 0;
   left: 0;
   right: 0;
-  line-height: 30px;
+  line-height: 40px;
   vertical-align: middle;
   font-family: verdana;
   padding-left: 10px;
   z-index: 999;
-  padding-bottom: 4px;
 }
 @media (max-device-width: 800px) {
   nav {
@@ -142,7 +141,7 @@ nav a {
 nav .logo {
   height: 20px;
   float: left;
-  margin-top: 5px;
+  margin-top: 10px;
   margin-right: 10px;
 }
 @media (max-device-width: 800px) {
@@ -206,4 +205,19 @@ img.fallback {
   img.fallback {
     position: relative;
   }
+}
+/* commerce */
+.ad {
+  text-align: center;
+}
+.ad > div,
+.ad img {
+  display: inline-block;
+  vertical-align: text-top;
+}
+.share-button {
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  line-height: normal;
 }
