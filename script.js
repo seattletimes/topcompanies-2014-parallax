@@ -3,24 +3,6 @@ var context;
 
 var qsa = function(s) { return Array.prototype.slice.call(document.querySelectorAll(s)) };
 
-var texts = qsa(".scroll-text");
-var sections = qsa(".scroll-section");
-var images = {};
-var loaded = 0;
-var checkLoaded = function() {
-  loaded++;
-  if (loaded == sections.length) {
-    init();
-  }
-};
-sections.forEach(function(section) {
-  var url = section.getAttribute("data-image");
-  var image = new Image();
-  image.onload = checkLoaded;
-  image.src = url;
-  images[url] = image;
-});
-
 var init = function() {
   try {
     context = canvas.getContext("2d");
@@ -48,6 +30,29 @@ var initMobile = function() {
     section.style.minHeight = img.height + "px";
   })
 };
+
+var texts = qsa(".scroll-text");
+var sections = qsa(".scroll-section");
+
+var images = {};
+var loaded = 0;
+var checkLoaded = function() {
+  loaded++;
+  if (loaded == sections.length) {
+    init();
+  }
+};
+if (!window.matchMedia || window.matchMedia("(max-device-width: 800px)").matches) {
+  initMobile();
+} else {
+  sections.forEach(function(section) {
+    var url = section.getAttribute("data-image");
+    var image = new Image();
+    image.onload = checkLoaded;
+    image.src = url;
+    images[url] = image;
+  });
+}
 
 var render = function(e) {
   var top = document.body.scrollTop || document.documentElement.scrollTop;

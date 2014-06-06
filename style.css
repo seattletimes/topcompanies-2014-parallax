@@ -141,6 +141,7 @@ nav {
     position: relative;
     text-align: center;
     margin-bottom: 8px;
+    font-size: 2em;
   }
 }
 nav a {
@@ -228,4 +229,11 @@ img.fallback {
   top: 10px;
   right: 5px;
   line-height: normal;
+}
+@media (max-device-width: 800px) {
+  .share-button {
+    position: fixed;
+    top: auto;
+    bottom: 30px;
+  }
 }

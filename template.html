@@ -2,6 +2,28 @@
 <html>
   <head>
     <meta charset="utf8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <title>Top Northwest Companies - 2014</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="http://apps-production.s3.amazonaws.com/static/images/favicon.ico" type="image/x-icon">
+
+    <!-- Social sharing meta -->
+    <meta property="og:title" content="How Northwest companies fared in 2013">
+    <meta property="og:site_name" content="The Seattle Times">
+    <meta property="og:image" content="http://seattletimes.com/art/ui/fb_icon_large.jpg">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="">
+    <meta property="og:description" content="The Seattle Times ranks publicly-owned companies based in the Northwest.">
+
+    <!-- BEGIN TWITTER SUMMARY CARD -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="">
+    <meta name="twitter:site" content="@seattletimes">
+    <meta name="twitter:title" content="How Northwest companies fared in 2013">
+    <meta name="twitter:description" content="The Seattle Times ranks publicly-owned companies based in the Northwest.">
+    <meta name="twitter:image" content="http://seattletimes.com/art/ui/fb_icon_large.jpg">
+
     <style>
 <%= css %>
     </style>
@@ -76,14 +98,14 @@
     <section class="text">
       <b>Reporting by:</b> Sanjay Bhatt<br>
       <b>Photos by:</b> Ken Lambert<br>
-      <b>Interactive by:</b> Thomas Wilburn, Katrina Barlow
+      <b>Interactive by:</b> Thomas Wilburn, Katrina Barlow<br>
       <b>Data sources:</b> Bloomberg, SEC filings
     </section>
     <script src="./share.min.js"></script>
     <script>
 new Share(".share-button", {
   ui: {
-    flyout: "bottom left"
+    flyout: window.matchMedia && matchMedia("(max-device-width: 800px)") ? "top left" : "bottom left"
   }
 })
     </script>
