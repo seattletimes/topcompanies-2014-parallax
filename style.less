@@ -11,6 +11,10 @@ body {
   background: white;
 }
 
+a img {
+  border: none;
+}
+
 @mobile: ~"(max-device-width: 800px)";
 
 canvas.backdrop {
@@ -153,7 +157,7 @@ nav {
   right: 0;
   line-height: 40px;
   vertical-align: middle;
-  font-family: verdana;
+  font-family: georgia;
   padding-left: 10px;
   z-index: 999;
 
@@ -250,9 +254,12 @@ img.fallback {
 
 .ad {
   text-align: center;
+  max-width: 100%;
+  overflow: hidden;
 
-  & > div, img {
+  & > div, img, iframe {
     display: inline-block;
+    max-width: 95%;
     //vertical-align: text-top;
   }
 }

@@ -9,6 +9,9 @@ body {
   line-height: 1.4;
   background: white;
 }
+a img {
+  border: none;
+}
 canvas.backdrop {
   position: fixed;
   height: 100%;
@@ -132,7 +135,7 @@ nav {
   right: 0;
   line-height: 40px;
   vertical-align: middle;
-  font-family: verdana;
+  font-family: georgia;
   padding-left: 10px;
   z-index: 999;
 }
@@ -219,10 +222,14 @@ img.fallback {
 /* commerce */
 .ad {
   text-align: center;
+  max-width: 100%;
+  overflow: hidden;
 }
 .ad > div,
-.ad img {
+.ad img,
+.ad iframe {
   display: inline-block;
+  max-width: 95%;
 }
 .share-button {
   position: absolute;
