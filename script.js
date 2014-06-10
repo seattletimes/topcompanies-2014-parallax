@@ -10,7 +10,8 @@ var init = function() {
     //IE8 gets mobile
     initMobile();
   }
-  if (!window.matchMedia || window.matchMedia("(max-device-width: 800px)").matches) {
+
+  if (window.matchMedia && window.matchMedia("(max-device-width: 800px)").matches) {
     //mobile
     initMobile();
   } else {

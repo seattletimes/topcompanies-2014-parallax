@@ -1,9 +1,13 @@
 <!doctype html>
 <html>
   <head>
-    <meta charset="utf8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1.0">
+    <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0">
     <title>Top Northwest Companies - 2014</title>
+
+    <!-- webfonts -->
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="http://apps-production.s3.amazonaws.com/static/images/favicon.ico" type="image/x-icon">
@@ -13,15 +17,15 @@
     <meta property="og:site_name" content="The Seattle Times">
     <meta property="og:image" content="http://seattletimes.com/art/ui/fb_icon_large.jpg">
     <meta property="og:type" content="article">
-    <meta property="og:url" content="">
-    <meta property="og:description" content="The Seattle Times ranks publicly-owned companies based in the Northwest.">
+    <meta property="og:url" content="http://apps.seattletimesdata.com/top-companies-2014">
+    <meta property="og:description" content="The Seattle Times' 23rd annual ranking of publicly traded Northwest companies.">
 
     <!-- BEGIN TWITTER SUMMARY CARD -->
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:url" content="">
+    <meta name="twitter:url" content="http://apps.seattletimesdata.com/top-companies-2014">
     <meta name="twitter:site" content="@seattletimes">
     <meta name="twitter:title" content="How Northwest companies fared in 2013">
-    <meta name="twitter:description" content="The Seattle Times ranks publicly-owned companies based in the Northwest.">
+    <meta name="twitter:description" content="The Seattle Times' 23rd annual ranking of publicly traded Northwest companies.">
     <meta name="twitter:image" content="http://seattletimes.com/art/ui/fb_icon_large.jpg">
 
     <style>
@@ -47,18 +51,18 @@
       </a>
       <ul>
         <li id="bonw-title">Top Northwest companies 2014</a></li>
-        <li class="company-ranking"><a href="#ranked-1">1<sup>st</sup></a></li>
-        <li class="company-ranking"><a href="#ranked-2">2<sup>nd</sup></a></li>
-        <li class="company-ranking"><a href="#ranked-3">3<sup>rd</sup></a></li>
-        <li class="company-ranking"><a href="#ranked-4">4<sup>th</sup></a></li>
-        <li class="company-ranking"><a href="#ranked-5">5<sup>th</sup></a></li>
+        <li class="company-ranking"><a href="#ranked-1">1st</a></li>
+        <li class="company-ranking"><a href="#ranked-2">2nd</a></li>
+        <li class="company-ranking"><a href="#ranked-3">3rd</a></li>
+        <li class="company-ranking"><a href="#ranked-4">4th</a></li>
+        <li class="company-ranking"><a href="#ranked-5">5th</a></li>
         <li class="company-ranking"><a href="#chart">Chart</a></li>
       </ul>
       <a class="share-button"></a>
     </nav>
     <% companies.forEach(function(co, i) { %>
     <section class="scroll-section" data-image="img/<%= co.img %>" id="ranked-<%= i + 1 %>">
-      <div class="scroll-text company-info">
+      <div class="scroll-text company-info <%= !(i % 2) ? "" : "left" %>">
         <div class="header">
           <img class="numeral" src="img/NW<%= i + 1 %>.png">
           <h2><%= co.company %></h2>
@@ -73,7 +77,14 @@
         <p><label>What sets it apart</label> <%= co.setApart %></p>
         <p><label>2013 cash flow</label> <%= co.cashFlow %></p>
         <p><label>2013 sales</label> <%= co.sales %></p>
-        <a class="read-more" href="<%= co.url %>">READ STORY &raquo;</a>
+        <a class="read-more" href="<%= co.link %>">READ STORY &#8594;</a>
+        <% if (!i) { %>
+        <div class="credit">
+          <p><strong>REPORTERS:</strong> Sanjay Bhatt, Coral Garnick, Dominic Gates, Janet I. Tu</p>
+          <p><strong>PHOTOGRAPHER:</strong> Ken Lambert
+        </div>
+
+        <% } %>
       </div>
       <div style="clear: both"></div>
     </section>
@@ -89,23 +100,26 @@
     </section>
 
     <section id="chart" class="text">
-      <h1>All Companies</h1>
+      <h1>How Northwest companies compare</h1>
       <div>
         <%- content %>
       </div>
     </section>
 
     <section class="text">
-      <b>Reporting by:</b> Sanjay Bhatt<br>
-      <b>Photos by:</b> Ken Lambert<br>
+      <b>Reporters:</b> Sanjay Bhatt, Coral Garnick, Dominic Gates and Janet I. Tu<br>
+      <b>Researcher:</b> Sanjay Bhatt<br>
+      <b>News editor:</b> Suzanne LaViolette<br>
+      <b>Photographer:</b> Ken Lambert<br>
       <b>Interactive by:</b> Thomas Wilburn, Katrina Barlow<br>
+      <b>Web producer:</b> Hannah Birch<br>
       <b>Data sources:</b> Bloomberg, SEC filings
     </section>
     <script src="./share.min.js"></script>
     <script>
 new Share(".share-button", {
   ui: {
-    flyout: window.matchMedia && matchMedia("(max-device-width: 800px)") ? "top left" : "bottom left"
+    flyout: window.matchMedia && matchMedia("(max-device-width: 800px)").matches ? "top left" : "bottom left"
   }
 })
     </script>

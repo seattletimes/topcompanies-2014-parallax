@@ -7,7 +7,14 @@ body {
   padding: 0;
   margin: 0;
   line-height: 1.4;
-  background: white;
+  background: #323232;
+  font-family: "Oswald", verdana, sans-serif;
+}
+a {
+  color: #09334b;
+}
+a:hover {
+  color: #3461a1;
 }
 a img {
   border: none;
@@ -20,14 +27,19 @@ canvas.backdrop {
   bottom: 0;
   left: 0;
   right: 0;
-  background: black;
+  background: #323232;
   z-index: -999;
+}
+@media (max-device-width: 1000px) {
+  canvas.backdrop {
+    display: none;
+  }
 }
 section.text {
   background: white;
   padding: 1em 2em;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   section.text {
     padding: 1em 2px;
   }
@@ -46,10 +58,10 @@ section.text {
   margin: 100px 20px 0 20px;
   display: block;
 }
-.scroll-section:nth-child(2n) .scroll-text {
+.scroll-text.left {
   float: left;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   .scroll-text {
     float: none;
     margin: 0;
@@ -63,11 +75,11 @@ section.text {
   font-size: 16px;
   position: relative;
   width: 350px;
-  padding: 8px 24px;
+  padding: 8px 24px 24px 24px;
   border-radius: 8px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.5);
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   .company-info {
     width: 100%;
     top: -10px;
@@ -119,7 +131,8 @@ section.text {
   padding: 4px;
   color: white;
   text-decoration: none;
-  font-family: Verdana, sans-serif;
+  font-family: arial, sans-serif;
+  font-weight: bold;
   font-size: 14px;
   border-radius: 4px;
 }
@@ -135,11 +148,11 @@ nav {
   right: 0;
   line-height: 40px;
   vertical-align: middle;
-  font-family: georgia;
+  font-family: "Oswald", sans-serif;
   padding-left: 10px;
   z-index: 999;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   nav {
     position: relative;
     text-align: center;
@@ -154,28 +167,32 @@ nav a {
 nav .logo {
   height: 20px;
   float: left;
-  margin-top: 10px;
+  margin-top: 12px;
   margin-right: 10px;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   nav .logo {
     float: none;
-    display: block;
     margin: 4px auto;
   }
 }
 nav #bonw-title {
-  font-weight: bold;
-  color: darkgreen;
+  font-weight: normal;
+  color: #434F44;
   text-transform: uppercase;
   margin-right: 10px;
+}
+@media (max-device-width: 1000px) {
+  nav #bonw-title {
+    font-size: 20px;
+  }
 }
 nav .company-ranking {
   text-transform: uppercase;
   margin-right: 1em;
   font-size: 13px;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   nav .company-ranking {
     display: none;
   }
@@ -204,7 +221,25 @@ nav ul li {
 /* special sections */
 #chart {
   background: white;
-  color: black;
+  color: #222;
+}
+#chart h1 {
+  font-size: 2em;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+@media (max-device-width: 1000px) {
+  #chart h1 {
+    font-size: 1.7em;
+  }
+}
+.credit {
+  margin-top: 20px;
+}
+.credit p {
+  font-size: 12px;
+  font-family: arial, sans-serif;
+  margin: 0;
 }
 /* old/mobile */
 img.fallback {
@@ -213,8 +248,9 @@ img.fallback {
   left: 0;
   z-index: -9;
   max-width: 100%;
+  width: 100%;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   img.fallback {
     position: relative;
   }
@@ -224,6 +260,13 @@ img.fallback {
   text-align: center;
   max-width: 100%;
   overflow: hidden;
+  margin-bottom: 20px;
+  clear: both;
+}
+@media (max-device-width: 1000px) {
+  .ad {
+    display: none;
+  }
 }
 .ad > div,
 .ad img,
@@ -237,10 +280,16 @@ img.fallback {
   right: 5px;
   line-height: normal;
 }
-@media (max-device-width: 800px) {
+@media (max-device-width: 1000px) {
   .share-button {
     position: fixed;
     top: auto;
     bottom: 30px;
   }
+}
+.share-button.sharer-0 label {
+  background: none !important;
+  /* Removes gray background on share button */
+  color: #555 !important;
+  /* Matches nav color in rankings */
 }

@@ -8,14 +8,23 @@ body {
   padding: 0;
   margin: 0;
   line-height: 1.4;
-  background: white;
+  background: #323232;
+  font-family: "Oswald", verdana, sans-serif;
+}
+
+a {
+  color: #09334b;
+
+  &:hover {
+    color: rgb(52, 97, 161);
+  }
 }
 
 a img {
   border: none;
 }
 
-@mobile: ~"(max-device-width: 800px)";
+@mobile: ~"(max-device-width: 1000px)";
 
 canvas.backdrop {
   position: fixed;
@@ -25,8 +34,11 @@ canvas.backdrop {
   bottom: 0;
   left: 0;
   right: 0;
-  background: black;
+  background: #323232;
   z-index: -999;
+  @media @mobile {
+    display: none;
+  }
 }
 
 section.text {
@@ -55,7 +67,7 @@ section.text {
   margin: 100px 20px 0 20px;
   display: block;
 
-  .scroll-section:nth-child(2n) & {
+  &.left {
     float: left;
   }
 
@@ -77,7 +89,7 @@ section.text {
   font-size: 16px;
   position: relative;
   width: 350px;
-  padding: 8px 24px;
+  padding: 8px 24px 24px 24px;
   border-radius: 8px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, .5);
 
@@ -138,7 +150,8 @@ section.text {
     padding: 4px;
     color: white;
     text-decoration: none;
-    font-family: Verdana, sans-serif;
+    font-family: arial, sans-serif;
+    font-weight: bold;
     font-size: 14px;
     border-radius: 4px;
 
@@ -157,7 +170,7 @@ nav {
   right: 0;
   line-height: 40px;
   vertical-align: middle;
-  font-family: georgia;
+  font-family: "Oswald", sans-serif;
   padding-left: 10px;
   z-index: 999;
 
@@ -176,21 +189,24 @@ nav {
   .logo {
     height: 20px;
     float: left;
-    margin-top: 10px;
+    margin-top: 12px;
     margin-right: 10px;
 
     @media @mobile {
       float: none;
-      display: block;
       margin: 4px auto;
     }
   }
 
   #bonw-title {
-    font-weight: bold;
-    color: darkgreen;
+    font-weight: normal;
+    color: #434F44;
     text-transform: uppercase;
     margin-right: 10px;
+
+    @media @mobile {
+      font-size: 20px;
+    }
   }
 
   .company-ranking {
@@ -233,7 +249,28 @@ nav {
 /* special sections */
 #chart {
   background: white;
-  color: black;
+  color: #222;
+  h1 {
+    font-size: 2em;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  @media @mobile {
+    h1 {
+      font-size: 1.7em;
+    }
+  }
+}
+
+.credit {
+  margin-top: 20px;
+
+  p {
+    font-size: 12px;
+    font-family: arial, sans-serif;
+    margin: 0;
+  }
 }
 
 /* old/mobile */
@@ -244,6 +281,7 @@ img.fallback {
   left: 0;
   z-index: -9;
   max-width: 100%;
+  width: 100%;
 
   @media @mobile {
     position: relative;
@@ -256,6 +294,12 @@ img.fallback {
   text-align: center;
   max-width: 100%;
   overflow: hidden;
+  margin-bottom: 20px;
+  clear: both;
+
+  @media @mobile {
+    display: none;
+  }
 
   & > div, img, iframe {
     display: inline-block;
@@ -275,4 +319,10 @@ img.fallback {
     top: auto;
     bottom: 30px;
   }
+
+  &.sharer-0 label {
+    background: none !important; /* Removes gray background on share button */
+    color: #555 !important; /* Matches nav color in rankings */
+  }
+
 }
