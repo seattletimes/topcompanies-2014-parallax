@@ -28,6 +28,28 @@
     <meta name="twitter:description" content="The Seattle Times' 23rd annual ranking of publicly traded Northwest companies.">
     <meta name="twitter:image" content="http://seattletimes.com/art/ui/fb_icon_large.jpg">
 
+    <!-- start Omniture -->
+    <meta name="t_omni_pubdate" content="06/09/2014 20:00" />
+
+    <meta name="t_omni_articleid" content="top-northwest-companies-2014" />
+
+    <meta name="t_omni_author" content="Seattle Times staff" />
+
+    <meta name="t_omni_pagename" content="st|businesstechnology|topcompanies" />
+
+    <meta name="t_omni_site" content="st" />
+
+    <meta name="t_omni_pagetype" content="newsapp" />
+
+    <meta name="t_omni_contenttitle" content="Top Northwest companies 2014 | The Seattle Times" />
+
+    <meta name="t_omni_path" content="st|businesstechnology|topcompanies|newsapp" />
+
+    <!-- end Omniture -->
+
+    <!-- Chartbeat top -->
+  <script type="text/javascript">var _sf_startpt=(new Date()).getTime()</script>
+
     <style>
 <%= css %>
     </style>
@@ -126,5 +148,42 @@ new Share(".share-button", {
     <script>
 <%= js %>
     </script>
+
+    <!-- start Omniture -->
+    <script language="JavaScript" type="text/javascript" src="http://marketplace.nwsource.com/shared/js/s_code.js?v=2.2"></script>
+    <script language="JavaScript" type="text/javascript" src="http://marketplace.nwsource.com/shared/js/omniHelper.js?v=2.2"></script>
+    <script language="JavaScript" type="text/javascript"><!--
+        if ('function' == typeof Omnihelper_PostIt) {
+            Omnihelper_PostIt();
+              } else {
+            if ('function' == typeof window.omni_pageCode) { omni_pageCode(); }
+            try { var s_code = s.t(); if (s_code) document.write(s_code) } catch (err) { }
+        }//-->
+    </script>
+    <!-- end Omniture -->
+
+    <!-- Chartbeat bottom -->
+    <script type="text/javascript">
+      var _sf_async_config={uid:22565,domain:"seattletimes.com"};
+      /** CONFIGURATION START **/
+      _sf_async_config.useCanonical = "true";
+      _sf_async_config.sections = "Top Northwest companies";
+      _sf_async_config.authors = "By  Seattle Times business staff";
+      /** CONFIGURATION END **/
+      (function(){
+        function loadChartbeat() {
+          window._sf_endpt=(new Date()).getTime();
+                                  var e = document.createElement('script');
+                                  e.setAttribute('language', 'javascript');
+                                  e.setAttribute('type', 'text/javascript');
+                                  e.setAttribute('src',
+            (("https:" == document.location.protocol) ? "https://a248.e.akamai.net/chartbeat.download.akamai.com/102508/" : "http://static.chartbeat.com/") + "js/chartbeat.js");
+                                  document.body.appendChild(e);
+                                  }
+                                  var oldonload = window.onload;
+                                  window.onload = (typeof window.onload != 'function') ? loadChartbeat : function() { oldonload(); loadChartbeat(); };
+                          })();
+    </script>
+
   </body>
 </html>
